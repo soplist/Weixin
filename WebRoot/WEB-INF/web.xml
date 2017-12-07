@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+  <display-name></display-name>
+  
+  
+  <!-- Spring -->  
+    <context-param>  
+        <param-name>contextConfigLocation</param-name>  
+        <param-value>  
+            classpath:applicationContext.xml  
+        </param-value>  
+    </context-param>  
+    <listener>  
+        <listener-class>  
+            org.springframework.web.context.ContextLoaderListener  
+        </listener-class>  
+    </listener>  
+    
+    <!-- 跨域访问配置 start -->
+	<filter>  
+        <filter-name>CORS</filter-name>  
+        <filter-class>com.thetransactioncompany.cors.CORSFilter</filter-class>  
+        <init-param>  
+         <param-name>cors.allowOrigin</param-name>  
+            <param-value>*</param-value>  
+        </init-param>  
+        <init-param>  
+         <param-name>cors.supportedMethods</param-name>  
+            <param-value>GET,POST,HEAD,OPTIONS,PUT</param-value>  
+        </init-param>  
+        <init-param>  
+         <param-name>cors.supportedHeaders</param-name>  
+            <param-value>Accept, Origin, X-Requested-With, Content-Type, Last-Modified,Access-Control-Request-Method,Access-Control-Request-Headers,BasicAuthUsername</param-value>  
+        </init-param>  
+        <init-param>  
+            <param-name>cors.exposedHeaders</param-name>  
+            <param-value>Set-Cookie</param-value>  
+        </init-param>  
+        <init-param>  
+            <param-name>cors.supportsCredentials</param-name>  
+            <param-value>true</param-value>  
+        </init-param>  
+    </filter>  
+    <filter-mapping>  
+        <filter-name>CORS</filter-name>  
+        <url-pattern>/*</url-pattern>  
+    </filter-mapping>
+    
+  
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>WeixinServlet</servlet-name>
+    <servlet-class>com.shengxin.servlet.WeixinServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>TokenServlet</servlet-name>
+    <servlet-class>com.shengxin.servlet.TokenServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>WholeServlet</servlet-name>
+    <servlet-class>com.shengxin.servlet.WholeServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>TestServlet</servlet-name>
+    <servlet-class>com.shengxin.servlet.TestServlet</servlet-class>
+  </servlet>
+
+
+
+
+  <servlet-mapping>
+    <servlet-name>WeixinServlet</servlet-name>
+    <url-pattern>/wx.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TokenServlet</servlet-name>
+    <url-pattern>/servlet/TokenServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>WholeServlet</servlet-name>
+    <url-pattern>/servlet/WholeServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TestServlet</servlet-name>
+    <url-pattern>/servlet/TestServlet</url-pattern>
+  </servlet-mapping>	
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
